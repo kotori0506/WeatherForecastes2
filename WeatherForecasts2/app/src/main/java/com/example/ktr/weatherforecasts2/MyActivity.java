@@ -26,7 +26,8 @@ public class MyActivity extends ActionBarActivity {
             @Override
         public void run(){
              try {
-                 final String data = WeatherApi.getWeather(MyActivity.this, "400040");
+                 final String data = WeatherApi.getWeather(MyActivity.this,
+                         "400040");
 
                  handler.post(new Runnable(){
                                  @Override
