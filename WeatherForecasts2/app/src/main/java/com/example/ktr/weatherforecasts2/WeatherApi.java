@@ -18,7 +18,7 @@ public class WeatherApi {
     private static final String URL =
             "http://weather.livedoor.com/forecast/webservice/json/v1?city=";
 
-    public static String getWeather(Context context, String pointId)
+    public static String WeatherForecast getWeather(Context context, String pointId)
             throws IOException {
 
         AndroidHttpClient client = AndroidHttpClient.newInstance(USER_AGENT, context);

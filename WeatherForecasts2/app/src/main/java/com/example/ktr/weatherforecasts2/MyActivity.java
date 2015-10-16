@@ -1,56 +1,54 @@
 package com.example.ktr.weatherforecasts2;
 
+
+import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.io.IOException;
-import android.os.Handler;
 
-
-public class MyActivity extends ActionBarActivity {
-
+public class MyActivity extends Activity {
     private TextView textView;
-    private Handler handler;
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_my);
 
-        textView=(TextView)findViewById(R.id.tv_main);
+    private class GetWeatherForecastTask extends GetWeatherForecastApiTask {
 
-        Thread thread = new Thread(){
-            @Override
-        public void run(){
-             try {
-                 final String data = WeatherApi.getWeather(MyActivity.this,
-                         "400040");
+        public GetWeatherForecastTask(Context context) {
+            super(context);
+        }
 
-                 handler.post(new Runnable(){
-                                 @Override
-                                public void run(){
-                                     textView.setText(data);
-                                 }
-                              });
-             }catch (final IOException e){
-                 handler.post(new Runnable(){
-                     @Override
-                    public void run(){
-                         Toast.makeText(MyActivity.this,e.getMessage(),
-                                 Toast.LENGTH_SHORT).show();
-                     }
-                 });
-             }
+        @Override
+        protected void onPostExecute(String data) {
+            super.onPostExecute(data.toString());
+
+
+            if (data != null) {
+                textView.setText(data.toString());
+                //location.setText(data.location.area + " " + data.location.prefecture + " " + data.location.city);
+            } else if (exception != null) {
+                Toast.makeText(MyActivity.this, exception.getMessage(), Toast.LENGTH_SHORT).show();
             }
-        };
+        }
+
+
+
 
     }
 
 
+
     @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        setContentView(R.layout.activity_my);
+
+        textView = (TextView) findViewById(R.id.tv_main);
+        new GetWeatherForecastTask(this).execute("400040");
+
+    }
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_my, menu);
