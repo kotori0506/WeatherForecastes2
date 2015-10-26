@@ -1,7 +1,6 @@
 package com.example.ktr.weatherforecasts2;
 
 import android.location.Location;
-import android.media.Image;
 
 import org.json.JSONArray;
 import org.json.JSONException;
