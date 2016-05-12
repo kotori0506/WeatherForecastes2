@@ -1,0 +1,49 @@
+package io.keiji.labyrinth;
+
+import android.app.Activity;
+import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.widget.Toast;
+
+
+public class MainActivity extends Activity implements LabyrinthView.Callback {
+
+    private LabyrinthView labyrinthView;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        labyrinthView = new LabyrinthView(this);
+        labyrinthView.setCallback(this);
+        setContentView(labyrinthView);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+        if (id == R.id.action_settings) {
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onGoal() {
+        Toast.makeText(this, "Goal!!", Toast.LENGTH_SHORT).show();
+
+        labyrinthView.stopSensor();
+        labyrinthView.stopDrawThread();
+    }
+}

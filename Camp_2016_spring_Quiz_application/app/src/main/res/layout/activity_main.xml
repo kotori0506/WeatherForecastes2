@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="com.example.oki.akihiro.camp_2016_spring_quiz_application.MainActivity">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true">
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="co"
+            android:id="@+id/Count"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="問題番号"
+            android:id="@+id/Question_nmb"
+            />
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="問題文"
+            android:id="@+id/Question_text"
+        />
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="今あなたの選んでいる答えは"
+            android:id="@+id/Answer"
+            />
+
+
+        <Button
+            android:id="@+id/Ans1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onClickAns"
+            android:tag="Ans1"
+            android:text="Ans1" />
+
+
+        <Button
+            android:id="@+id/Ans2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onClickAns"
+            android:tag="Ans2"
+            android:text="Ans2" />
+
+        <Button
+            android:id="@+id/Ans3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onClickAns"
+            android:tag="Ans3"
+            android:text="Ans3" />
+
+        <Button
+            android:id="@+id/Ans4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onClickAns"
+            android:tag="Ans4"
+            android:text="Ans4" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="答え合わせをして次の問題へ"
+            android:id="@+id/NextQuiz"
+            android:onClick="onClickNextQuiz"
+            />
+
+
+
+    </LinearLayout>
+
+
+</RelativeLayout>

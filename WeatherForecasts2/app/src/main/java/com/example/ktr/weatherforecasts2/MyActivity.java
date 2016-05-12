@@ -45,6 +45,7 @@ public class MyActivity extends Activity {
 
         setContentView(R.layout.activity_my);
 
+
         textView = (TextView) findViewById(R.id.tv_main);
         new GetWeatherForecastTask(this).execute("400040");
 
